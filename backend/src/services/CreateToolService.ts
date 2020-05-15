@@ -23,8 +23,9 @@ class CreateToolService {
 
     const findToolWithSameName = await toolsRepository.findByName(name);
 
+    // Valida se já não existe uma tool com esse nome
     if (findToolWithSameName) {
-      throw new AppError('One Tool with this name already exists');
+      throw new AppError('Uma Tool com este nome já está cadastrada');
     }
 
     const tool = toolsRepository.create({

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
@@ -26,18 +25,6 @@ export const Content = styled.div`
       margin-bottom: 24px;
       font-family: 'Open Sans', serif;
       color: rgb(225, 224, 224);
-    }
-
-    a {
-      color: #f4ede8;
-      display: block;
-      margin-top: 24px;
-      text-decoration: none;
-      transition: color 0.2s;
-
-      &:hover {
-        color: ${shade(0.2, '#f4ede8')};
-      }
     }
   }
 `;
@@ -88,16 +75,13 @@ export const ToolCard = styled.div`
   }
 
   span {
-    margin-left: auto;
     color: rgb(53, 53, 51);
+    margin-right: 15px;
   }
 `;
 
 export const DeleteButton = styled.button`
   border: 0;
   background-color: rgb(225, 224, 224);
-  position: absolute;
-  right: 0;
-  top: 0px;
-  margin-right: 4px;
+  margin-left: 15px;
 `;

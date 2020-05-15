@@ -8,7 +8,7 @@ import CreateToolService from '../services/CreateToolService';
 
 const toolsRouter = Router();
 
-// Roda padrão para o get, se usada sozinha irá trazer todas tools
+// Rota padrão para o get, se usada sozinha irá trazer todas tools
 toolsRouter.get('/', async (request, response) => {
   const toolsRepository = getCustomRepository(ToolsRepository);
 
@@ -32,8 +32,10 @@ toolsRouter.get('/', async (request, response) => {
 toolsRouter.post('/', async (request, response) => {
   const { name, link, description, tags } = request.body;
 
+  // Antes de criar uso o serviço para fazer uma validação
   const createTool = new CreateToolService();
 
+  // Se estiver tudo correto, o próprio serviço grava o novo repositório
   const tool = await createTool.execute({
     name,
     link,
@@ -50,10 +52,12 @@ toolsRouter.delete('/:id', async (request, response) => {
 
   const tool = await toolsRepository.findOne(id);
 
+  // Verifica se a ID que está sendo deletada existe
   if (!tool) {
     throw new AppError('The tool selected to be deleted, does not exists');
   }
 
+  // Se existe deleta ela.
   await toolsRepository.delete(tool.id);
 
   return response.json({ message: 'Tool Deleted with Success' });

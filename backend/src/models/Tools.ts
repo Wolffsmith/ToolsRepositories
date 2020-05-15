@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
+// Utilizei o typeOrm para criação da model e controle das migrations
 @Entity('tools')
 class Tool {
   @PrimaryGeneratedColumn('uuid')
